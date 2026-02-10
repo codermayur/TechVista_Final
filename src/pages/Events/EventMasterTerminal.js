@@ -18,7 +18,7 @@ const EVENTS = {
     details: ["• Tools: Power BI /Excel", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 1, max: 2 },
-    whatsappLink: "https://chat.whatsapp.com/example-dataviz", // Added WhatsApp Link
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC", // Added WhatsApp Link
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name (Optional for Solo)', required: false },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -38,7 +38,7 @@ const EVENTS = {
     fee: "100",
     description: "Evaluates technical accuracy, creativity, and problem-solving through web development.",
     details: ["• All work must be original", "• Strictly No communication", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
-    whatsappLink: "https://chat.whatsapp.com/example-webowar", // Added WhatsApp Link
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC", // Added WhatsApp Link
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -57,7 +57,7 @@ const EVENTS = {
     fee: "100",
     description: "In Bug Busters, participants race to debug broken HTML and JavaScript coding scripts.",
     details: [ "• Type:Solo Challenge", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
-    whatsappLink: "https://chat.whatsapp.com/example-bugbusters",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'fullName', label: 'Defender Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email', required: true },
@@ -79,13 +79,13 @@ const EVENTS = {
     details: ["• Format: Multiplayer Virtual Simulation", "• Team Size: 2-4 Members", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 2, max: 4 },
-    whatsappLink: "https://chat.whatsapp.com/example-robotics",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
       { id: 'email', label: 'Contact Email', placeholder: 'Enter primary email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter primary contact', required: true },
-      { id: 'codingLang', label: 'Preferred Language', type: 'select', options: ['Python', 'C++', 'ROS'], required: true },
+      { id: 'codingLang', label: 'Preferred Language', type: 'select', options: ['Python', 'C++', 'Lua', 'Java', 'C'], required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -99,7 +99,7 @@ const EVENTS = {
     fee: "50",
     description: "Challenge your syntax knowledge and logic speed.",
     details: ["• Format: Solo Participation", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
-    whatsappLink: "https://chat.whatsapp.com/example-crossword",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -121,7 +121,7 @@ const EVENTS = {
     details: ["• Team Size: 1-3 Members", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 1, max: 3 },
-    whatsappLink: "https://chat.whatsapp.com/example-adomania",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -139,7 +139,7 @@ const EVENTS = {
     fee: "100",
     description: "Enter the coding arena—solve fast, decode clues.",
     details: ["• Team Size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
-    whatsappLink: "https://chat.whatsapp.com/example-codearena",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
       { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
@@ -158,7 +158,7 @@ const EVENTS = {
     fee: "100",
     description: "The reel should be a 60–90 second highlight of Tech-Vista 2026.",
     details: ["• Duration: 60–90 Seconds", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
-    whatsappLink: "https://chat.whatsapp.com/example-reelistic",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', type: 'email', placeholder: 'Enter your email', required: true },
@@ -180,7 +180,7 @@ const EVENTS = {
     details: ["• Team Size: 4 to 5 Members", "• Entry Fees: ₹200", "• Prize Pool: ₹10000"],
     isTeamEvent: true,
     teamConfig: { min: 4, max: 5 },
-    whatsappLink: "https://chat.whatsapp.com/example-bgmi",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter team name', required: true, fullWidth: true },
       { id: 'leaderName', label: 'Leader Name', placeholder: 'Enter full name', required: true },
@@ -200,7 +200,7 @@ const EVENTS = {
     fee: "100",
     description: "Compete among the participants",
     details: ["• Team size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
-    whatsappLink: "https://chat.whatsapp.com/example-fifa",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
       { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
@@ -221,7 +221,7 @@ const EVENTS = {
     details: ["• Team Size: 1-3 Members", "• Live Presentation", "• Entry Fees: ₹200", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 1, max: 3 },
-    whatsappLink: "https://chat.whatsapp.com/example-storytelling",
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter team/project name', required: true },
       { id: 'email', label: 'Contact Email', placeholder: 'Enter primary email', type: 'email', required: true },

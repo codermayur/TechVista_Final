@@ -22,9 +22,11 @@ const CONTACT_DATA = [
   { id: 11, section: 'event-heads', name: "Subham Sahu", role: "Event Head", email: "subham.sahu@vsit.edu.in", phone: "+91 88888 77777", img: "/event heads/subham.png" },
   { id: 12, section: 'event-heads', name: "Ayesha Khan", role: "Event Head", email: "ayeshakhatoon.khan@vsit.edu.in", phone: "+91 89285 85903", img: "/event heads/ayesha.png" },
   { id: 13, section: 'event-heads', name: "Pruthviraj Patil", role: "Event Head", email: "pruthviraj.patil@vsit.edu.in", phone: "+91 84528 21285", img: "/event heads/pruthvi.png" },
+  { id: 14, section: 'committee-heads', name: "Anuj Gawde", role: "Contigent Leader", email: "anuj.gawde@vsit.edu.in", phone: "+91 96531 16701", img: "/SOCIAL/9.png" },
+  { id: 15, section: 'committee-heads', name: "Parnavi Janbhor", role: "Assistant Contigent Leader", email: "parnavi.janbhor@vsit.edu.in", phone: "+91 74004 29237", img: "/SOCIAL/10.png" },
   { id: 16, section: 'committee-heads', name: "Chaitanya Kudalkar", role: "Digi Head", email: "chaitanya.kudalkar@vsit.edu.in", phone: "+91 93729 93446", img: "/SOCIAL/5.png" },
-  { id: 17, section: 'committee-heads', name: "Aryan Sawant", role: "Digi Head", email: "aryan.sawant@vsit.edu.in", phone: "+91 836 968 1887", img: "/SOCIAL/4.png" },
-  { id: 18, section: 'committee-heads', name: "Jyoti Yadav", role: "Creative Head", email: "jyoti.yadav@vsit.edu.in", phone: "+91 877 927 3885", img: "/SOCIAL/12.png" },
+  { id: 17, section: 'committee-heads', name: "Aryan Sawant", role: "Digi Head", email: "aryan.sawant@vsit.edu.in", phone: "+91 83696 81887", img: "/SOCIAL/4.png" },
+  { id: 18, section: 'committee-heads', name: "Jyoti Yadav", role: "Creative Head", email: "jyoti.yadav@vsit.edu.in", phone: "+91 87792 73885", img: "/SOCIAL/12.png" },
   { id: 19, section: 'committee-heads', name: "Aryaman Chilka", role: "Creative Head", email: "aryaman.chilka@vsit.edu.in", phone: "+91 91361 06309", img: "/SOCIAL/13.png" },
   { id: 20, section: 'committee-heads', name: "Mansi Kanojia", role: "Logistic Head", email: "mansi.kanojia@vsit.edu.in", phone: "+91 98202 62314", img: "/SOCIAL/15.png" },
   { id: 21, section: 'committee-heads', name: "Tanvi Karjekar", role: "Documentation Head", email: "tanvi.karjekar@vsit.edu.in", phone: "+91 98190 62662", img: "/SOCIAL/6.png" },
@@ -33,7 +35,7 @@ const CONTACT_DATA = [
   { id: 24, section: 'committee-heads', name: "Shubh Nair", role: "Technical Head", email: "shubh.nair@vsit.edu.in", phone: "+91 90826 02095", img: "/SOCIAL/7.png" },
   { id: 25, section: 'committee-heads', name: "Mayuresh Tandel", role: "Technical Head", email: "mayuresh.tandel@vsit.edu.in", phone: "+91 87925 81488", img: "/SOCIAL/8.png" },
   { id: 26, section: 'committee-heads', name: "Pooja Salunkhe", role: "Marketing Head", email: "pooja.salunkhe@vsit.edu.in", phone: "+91 91379 79221", img: "/SOCIAL/11.png" },
-  { id: 27, section: 'committee-heads', name: "Nupur Budge", role: "Sponsorship Head", email: "nupur.bugde1@vsit.edu.in", phone: "+91 9978523456", img: "/SOCIAL/5.png" },
+  { id: 27, section: 'committee-heads', name: "Nupur Budge", role: "Sponsorship Head", email: "nupur.bugde1@vsit.edu.in", phone: "+91 99785 23456", img: "/SOCIAL/5.png" },
 
 ];
 
