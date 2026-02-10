@@ -60,8 +60,13 @@ const Contact = () => {
 
   return (
     <div className="text-white h-screen w-full relative bg-black overflow-hidden flex flex-col">
-      <div className="fixed top-4 left-4 md:top-6 md:left-6 z-[200] font-orbitron text-xl md:text-3xl font-bold text-white transition-colors duration-300">TV</div>
-
+<div className="fixed top-4 left-4 md:top-6 md:left-6 z-[200] font-orbitron text-xl md:text-3xl font-bold text-white">
+                        <img
+                            src="/logo.png"
+                            alt="TechVista"
+                            className="h-12 md:h-16 w-auto" // Added sizing to ensure it shows up!
+                        />
+                    </div>
       <SidebarNav activeNav={activeNav} setActiveNav={setActiveNav} />
       <SocialSidebar />
       <Footer activeNav={activeNav} setActiveNav={setActiveNav} />
