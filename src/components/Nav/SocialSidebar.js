@@ -12,8 +12,8 @@ const SocialItem = ({ href, icon, label }) => (
 
 const SocialSidebar = () => (
   <aside className="flex fixed top-1/2 -translate-y-1/2 right-0 w-16 md:w-24 z-[110] flex-col items-stretch justify-center gap-2 right-sidebar bg-transparent">
-    <SocialItem href="#" label="Insta" icon={<InstaIcon />} />
-    <SocialItem href="#" label="LinkedIn" icon={<LinkedInIcon />} />
+    <SocialItem href="https://www.instagram.com/techvista_vsit/" label="Insta" icon={<InstaIcon />} />
+    <SocialItem href="https://www.linkedin.com/school/vsit-mumbai/posts/?feedView=all" label="LinkedIn" icon={<LinkedInIcon />} />
   </aside>
 );
 
