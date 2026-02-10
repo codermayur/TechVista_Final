@@ -15,7 +15,7 @@ const EVENTS = {
     bgImage: "/Event Posters/Data-Viz Master/1770198539426~2.png",
     fee: "100",
     description: "Become a DataViz Master. Transform complex datasets into clear, actionable insights.",
-    details: ["• Tools: Power BI / Tableau / Excel", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
+    details: ["• Tools: Power BI ", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true, // Updated to allow Duo
     teamConfig: { min: 1, max: 2 },
     fields: [
@@ -23,7 +23,7 @@ const EVENTS = {
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
-      { id: 'toolPreference', label: 'Primary Tool', type: 'select', options: ['Power BI', 'Tableau', 'Excel'], required: true },
+      { id: 'toolPreference', label: 'Primary Tool', type: 'select', options: ['Power BI'], required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -53,14 +53,14 @@ const EVENTS = {
     type: "CRITICAL DEBUGGING",
     bgImage: "/Event Posters/Debug Error/image_90839f54.png",
     fee: "100",
-    description: "Hacker THE DEVIL has breached the system. Save VSIT infrastructure.",
-    details: ["• Objective: Save VSIT infrastructure", "• Toolset: AI-Assisted Debugging", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
+    description: "In Bug Busters, participants race to debug broken HTML and JavaScript coding scripts. Fix all errors quickly to ensure your code matches the target output perfectly.",
+    details: [ "• Type:Solo Challenge", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
     fields: [
       { id: 'fullName', label: 'Defender Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'college', label: 'Institute Name', placeholder: 'Enter your institute name', required: true },
-      { id: 'expertise', label: 'Primary Language', type: 'select', options: ['HTML', 'JavaScript'], required: true },
+      { id: 'expertise', label: 'Primary Language', type: 'select', options: ['HTML + JavaScript' ], required: true },
       { id: 'paymentScreenshot', label: 'Security Clearance (Payment)', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -149,7 +149,7 @@ const EVENTS = {
     type: "CREATIVE CHALLENGE",
     bgImage: "/Event Posters/Reelistic/reelistic.png",
     fee: "100",
-    description: "Capture Tech-Vista 2026 in a 60–90 second Instagram reel.",
+    description: "The reel should be a 60–90 second highlight of Tech-Vista 2026, showcasing its events, vibrant atmosphere, and key moments in an engaging and energetic way.",
     details: ["• Duration: 60–90 Seconds", "• Creativity is key", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
