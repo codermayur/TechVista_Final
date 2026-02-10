@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import SidebarNav from '../../components/Nav/SidebarNav';
 import SocialSidebar from '../../components/Nav/SocialSidebar';
 import Footer from '../../components/Nav/Footer';
 import RegistrationForm from '../../components/Forms/RegistrationForm';
 import '../../App.css';
+
+// 1. PLACE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz4kZ_YQP-dsaeC5kFcjqj-baqALuBcoheSWrVdG-OLH78Fqml5NCe99lNmW2yhpZaM/exec';
 
 const EVENTS = {
   seedBanker: {
@@ -19,7 +23,7 @@ const EVENTS = {
     details: ["• Tools: Power BI /Excel", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 1, max: 2 },
-    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC", // Added WhatsApp Link
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name (Optional for Solo)', required: false },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -40,7 +44,7 @@ const EVENTS = {
     fee: "100",
     description: "Evaluates technical accuracy, creativity, and problem-solving through web development.",
     details: ["• All work must be original", "• Strictly No communication", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
-    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC", // Added WhatsApp Link
+    whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -192,9 +196,9 @@ const EVENTS = {
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter team name', required: true, fullWidth: true },
-      { id: 'leaderName', label: 'Leader Name', placeholder: 'Enter full name', required: true },
+      { id: 'fullName', label: 'Leader Name', placeholder: 'Enter full name', required: true },
       { id: 'leaderGameId', label: 'Leader In Game ID', placeholder: 'Enter in-game id', required: true },
-      { id: 'leaderCollege', label: 'Leader College', placeholder: 'Enter institute name', required: true },
+      { id: 'college', label: 'College Name', placeholder: 'Enter institute name', required: true },
       { id: 'phone', label: 'Leaders WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
@@ -244,6 +248,14 @@ const EVENTS = {
   }
 };
 
+/** Utility: Converts browser file object to Base64 for Google Script */
+const fileToBase64 = (file) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = (error) => reject(error);
+});
+
 const EventMasterTerminal = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
@@ -253,12 +265,12 @@ const EventMasterTerminal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [memberCount, setMemberCount] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isRegistered, setIsRegistered] = useState(false); // State to toggle form/success view
+  const [isRegistered, setIsRegistered] = useState(false);
 
   useEffect(() => {
     if (eventId && EVENTS[eventId]) {
       setSelectedEvent(eventId);
-      setIsRegistered(false); // Reset view when changing events
+      setIsRegistered(false);
       const config = EVENTS[eventId].teamConfig;
       setMemberCount(config ? config.min : 1);
     }
@@ -321,20 +333,81 @@ const EventMasterTerminal = () => {
     return baseFields;
   };
 
+  /** UPDATED SUBMISSION LOGIC TO HANDLE CORS AND FLATTENING */
   const handleMasterSubmit = async (formData) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
-    console.log("Terminal Submission Data:", { ...formData, event: selectedEvent, totalMembers: memberCount });
 
-    // Simulate API logic
-    setTimeout(() => {
+    const loadingToast = toast.loading('Initializing neural link... Synchronizing data.');
+
+    try {
+      const processedSubmission = {};
+
+      for (const key in formData) {
+        const value = formData[key];
+
+        if (value instanceof File) {
+          processedSubmission[`${key}_fileName`] = value.name;
+          processedSubmission[`${key}_fileType`] = value.type;
+          processedSubmission[`${key}_base64`] = await fileToBase64(value);
+        } else {
+          processedSubmission[key] = value;
+        }
+      }
+
+      const finalPayload = {
+        eventId: selectedEvent,
+        eventName: currentEvent.name,
+        submissionData: processedSubmission
+      };
+
+      // Using mode: 'no-cors' to bypass browser CORS preflight blocks
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain', // Use text/plain to avoid OPTIONS preflight
+        },
+        body: JSON.stringify(finalPayload)
+      });
+
+      // Because 'no-cors' provides no readable response, we assume success
+      // if the request doesn't throw a network error.
+      toast.success('Neural sync complete. Access granted!', { id: loadingToast });
+
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setIsRegistered(true);
+      }, 500);
+
+    } catch (error) {
+      console.error("Submission failed:", error);
+      toast.error('Neural link severed. Network transmission failure.', { id: loadingToast });
       setIsSubmitting(false);
-      setIsRegistered(true); // Toggle to success view
-    }, 1500);
+    }
   };
 
   return (
     <div className="text-white h-screen w-full relative bg-[#030f0a] overflow-hidden flex flex-col">
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          style: {
+            background: '#031f14',
+            color: '#39ff14',
+            border: '1px solid #39ff14',
+            fontFamily: 'Orbitron, sans-serif',
+            fontSize: '12px',
+            textTransform: 'uppercase'
+          },
+          success: { iconTheme: { primary: '#39ff14', secondary: '#031f14' } },
+          error: {
+            style: { border: '1px solid #ff0044', color: '#ff0044' },
+            iconTheme: { primary: '#ff0044', secondary: '#031f14' }
+          }
+        }}
+      />
+
       <button
         onClick={() => navigate('/events')}
         className="fixed top-6 right-6 z-[250] font-orbitron text-[10px] uppercase tracking-widest text-[#39ff14] border border-[#39ff14]/50 px-4 py-2 rounded-full bg-black/80 backdrop-blur-md hover:bg-[#39ff14] hover:text-black transition-all cursor-pointer"
@@ -360,7 +433,7 @@ const EventMasterTerminal = () => {
         </div>
 
         <div className="z-[100] mt-10 flex flex-col items-center relative w-full max-w-[320px] mx-auto">
-          {!isRegistered && ( // Hide dropdown on success
+          {!isRegistered && (
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               className="group relative w-full bg-black/60 backdrop-blur-2xl border border-[#39ff14]/30 p-4 rounded-md flex items-center justify-between transition-all hover:border-[#39ff14]"
@@ -397,7 +470,6 @@ const EventMasterTerminal = () => {
 
         <main className="z-10 py-10 flex flex-col items-center">
           {!isRegistered ? (
-            /* REGISTRATION FORM VIEW */
             <>
               <div className="max-w-3xl w-full mb-10 text-center">
                 <h1 className="font-orbitron text-4xl md:text-5xl font-bold text-[#39ff14] uppercase tracking-widest drop-shadow-[0_0_15px_rgba(57,255,20,0.6)]">
@@ -409,6 +481,8 @@ const EventMasterTerminal = () => {
                   <span>DATE: {currentEvent.date}</span>
                   <span className="opacity-30">|</span>
                   <span>TYPE: {currentEvent.type}</span>
+                  <span className="opacity-30">|</span>
+                  <span>TIME: {currentEvent.time}</span>
                 </div>
 
                 <div className="mt-8 bg-black/30 backdrop-blur-md border border-white/5 p-6 rounded-lg text-left">
@@ -442,7 +516,6 @@ const EventMasterTerminal = () => {
               </div>
             </>
           ) : (
-            /* SUCCESS / JOIN WHATSAPP VIEW */
             <div className="max-w-2xl w-full bg-black/60 backdrop-blur-3xl border border-[#39ff14]/30 p-10 rounded-2xl text-center shadow-[0_0_40px_rgba(57,255,20,0.2)] animate-in zoom-in duration-500 my-20">
               <div className="w-20 h-20 border-2 border-[#39ff14] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_#39ff14]">
                 <svg className="w-10 h-10 text-[#39ff14]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -452,7 +525,6 @@ const EventMasterTerminal = () => {
               <h2 className="font-orbitron text-3xl text-[#39ff14] mb-4 tracking-widest uppercase">Registration Success</h2>
               <p className="font-roboto text-gray-400 mb-8 tracking-wider">
                 Your entry for <strong>{currentEvent.name}</strong> has been received.
-                Please join the official WhatsApp group for event updates and communication.
               </p>
 
               <a

@@ -111,7 +111,7 @@ const Drone = ({ side, mouseX, mouseY }) => {
                         <div className="spotlight-beam"></div>
                     </div>
                 </motion.div>
-            </div>
+</div>
         </div>
     );
 };
