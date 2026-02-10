@@ -15,7 +15,7 @@ const EVENTS = {
     bgImage: "/Event Posters/Data-Viz Master/1770198539426~2.png",
     fee: "100",
     description: "Become a DataViz Master. Transform complex datasets into clear, actionable insights.",
-    details: ["• Tools: Power BI ", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
+    details: ["• Tools: Power BI /Excel", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true, // Updated to allow Duo
     teamConfig: { min: 1, max: 2 },
     fields: [
@@ -23,7 +23,7 @@ const EVENTS = {
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
-      { id: 'toolPreference', label: 'Primary Tool', type: 'select', options: ['Power BI'], required: true },
+      { id: 'toolPreference', label: 'Primary Tool', type: 'select', options: ['Power BI','Excel'], required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
