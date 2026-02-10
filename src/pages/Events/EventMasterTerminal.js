@@ -16,8 +16,9 @@ const EVENTS = {
     fee: "100",
     description: "Become a DataViz Master. Transform complex datasets into clear, actionable insights.",
     details: ["• Tools: Power BI /Excel", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
-    isTeamEvent: true, // Updated to allow Duo
+    isTeamEvent: true,
     teamConfig: { min: 1, max: 2 },
+    whatsappLink: "https://chat.whatsapp.com/example-dataviz", // Added WhatsApp Link
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name (Optional for Solo)', required: false },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -37,6 +38,7 @@ const EVENTS = {
     fee: "100",
     description: "Evaluates technical accuracy, creativity, and problem-solving through web development.",
     details: ["• All work must be original", "• Strictly No communication", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
+    whatsappLink: "https://chat.whatsapp.com/example-webowar", // Added WhatsApp Link
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -53,8 +55,9 @@ const EVENTS = {
     type: "CRITICAL DEBUGGING",
     bgImage: "/Event Posters/Debug Error/image_90839f54.png",
     fee: "100",
-    description: "In Bug Busters, participants race to debug broken HTML and JavaScript coding scripts. Fix all errors quickly to ensure your code matches the target output perfectly.",
+    description: "In Bug Busters, participants race to debug broken HTML and JavaScript coding scripts.",
     details: [ "• Type:Solo Challenge", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
+    whatsappLink: "https://chat.whatsapp.com/example-bugbusters",
     fields: [
       { id: 'fullName', label: 'Defender Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email', required: true },
@@ -73,9 +76,10 @@ const EVENTS = {
     bgImage: "/Event Posters/E-Yantra Robotics/file_0000000084347209a64d75b9d8567323 (1).png",
     fee: "100",
     description: "A simulation-based robotics event focusing on coding and logic building.",
-    details: ["• Format: Multiplayer Virtual Simulation", "• Language: Python / C++ / ROS", "• Team Size: 2-4 Members", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
+    details: ["• Format: Multiplayer Virtual Simulation", "• Team Size: 2-4 Members", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 2, max: 4 },
+    whatsappLink: "https://chat.whatsapp.com/example-robotics",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -94,7 +98,8 @@ const EVENTS = {
     bgImage: "/Event Posters/Code Crossword/Event poster/IMG-20260127-WA0008.jpg",
     fee: "50",
     description: "Challenge your syntax knowledge and logic speed.",
-    details: ["• Format: Solo Participation", "• Speed & Accuracy Scoring", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
+    details: ["• Format: Solo Participation", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
+    whatsappLink: "https://chat.whatsapp.com/example-crossword",
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
@@ -113,9 +118,10 @@ const EVENTS = {
     bgImage: "/Event Posters/Ad-O-Mania/Ad-O-Mania Event Poster 2.png",
     fee: "200",
     description: "Bring products to life using marketing strategies.",
-    details: ["• Team Size: 1-3 Members", "• Pitches before judges", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
+    details: ["• Team Size: 1-3 Members", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 1, max: 3 },
+    whatsappLink: "https://chat.whatsapp.com/example-adomania",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -132,7 +138,8 @@ const EVENTS = {
     bgImage: "/Event Posters/Code Break Arena/Code Break Arena.png",
     fee: "100",
     description: "Enter the coding arena—solve fast, decode clues.",
-    details: ["• Team Size: 1", "• Languages: C++, Java, Python", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
+    details: ["• Team Size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
+    whatsappLink: "https://chat.whatsapp.com/example-codearena",
     fields: [
       { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
       { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
@@ -149,8 +156,9 @@ const EVENTS = {
     type: "CREATIVE CHALLENGE",
     bgImage: "/Event Posters/Reelistic/reelistic.png",
     fee: "100",
-    description: "The reel should be a 60–90 second highlight of Tech-Vista 2026, showcasing its events, vibrant atmosphere, and key moments in an engaging and energetic way.",
-    details: ["• Duration: 60–90 Seconds", "• Creativity is key", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
+    description: "The reel should be a 60–90 second highlight of Tech-Vista 2026.",
+    details: ["• Duration: 60–90 Seconds", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
+    whatsappLink: "https://chat.whatsapp.com/example-reelistic",
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', type: 'email', placeholder: 'Enter your email', required: true },
@@ -172,12 +180,13 @@ const EVENTS = {
     details: ["• Team Size: 4 to 5 Members", "• Entry Fees: ₹200", "• Prize Pool: ₹10000"],
     isTeamEvent: true,
     teamConfig: { min: 4, max: 5 },
+    whatsappLink: "https://chat.whatsapp.com/example-bgmi",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter team name', required: true, fullWidth: true },
       { id: 'leaderName', label: 'Leader Name', placeholder: 'Enter full name', required: true },
       { id: 'leaderGameId', label: 'Leader In Game ID', placeholder: 'Enter in-game id', required: true },
       { id: 'leaderCollege', label: 'Leader College', placeholder: 'Enter institute name', required: true },
-      { id: 'phone', label: 'Leaders Whatsapp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
+      { id: 'phone', label: 'Leaders WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -191,6 +200,7 @@ const EVENTS = {
     fee: "100",
     description: "Compete among the participants",
     details: ["• Team size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
+    whatsappLink: "https://chat.whatsapp.com/example-fifa",
     fields: [
       { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
       { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
@@ -211,6 +221,7 @@ const EVENTS = {
     details: ["• Team Size: 1-3 Members", "• Live Presentation", "• Entry Fees: ₹200", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
     teamConfig: { min: 1, max: 3 },
+    whatsappLink: "https://chat.whatsapp.com/example-storytelling",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter team/project name', required: true },
       { id: 'email', label: 'Contact Email', placeholder: 'Enter primary email', type: 'email', required: true },
@@ -231,10 +242,12 @@ const EventMasterTerminal = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [memberCount, setMemberCount] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false); // State to toggle form/success view
 
   useEffect(() => {
     if (eventId && EVENTS[eventId]) {
       setSelectedEvent(eventId);
+      setIsRegistered(false); // Reset view when changing events
       const config = EVENTS[eventId].teamConfig;
       setMemberCount(config ? config.min : 1);
     }
@@ -270,12 +283,7 @@ const EventMasterTerminal = () => {
       const memberFields = [];
       const labelPrefix = selectedEvent === 'gaming' ? 'Player' : 'Member';
 
-      // For Events like seedBanker (Data Viz) or adForge, player 1 is the main contact,
-      // but we need to collect names for others.
-      const startFrom = (selectedEvent === 'gaming' || selectedEvent === 'seedBanker' || selectedEvent === 'botYantra') ? 1 : 1;
-
       for (let i = 1; i <= memberCount; i++) {
-        // Avoid duplicate name fields if leaderName or fullName is already in baseFields
         const isLeader = (i === 1 && (baseFields.some(f => f.id === 'leaderName' || f.id === 'fullName')));
         if (isLeader) continue;
 
@@ -306,8 +314,12 @@ const EventMasterTerminal = () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     console.log("Terminal Submission Data:", { ...formData, event: selectedEvent, totalMembers: memberCount });
-    // API logic here
-    setIsSubmitting(false);
+
+    // Simulate API logic
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsRegistered(true); // Toggle to success view
+    }, 1500);
   };
 
   return (
@@ -323,7 +335,7 @@ const EventMasterTerminal = () => {
       <SocialSidebar />
       <Footer activeNav={activeNav} setActiveNav={setActiveNav} />
 
-      <div className="flex-1 w-full h-full overflow-y-auto flex flex-col relative pl-16 md:pl-24 pr-16 md:pr-24 no-scrollbar">
+      <div className="flex-1 w-full h-full overflow-y-auto flex flex-col relative pl-16 md:pl-24 pr-16 md:pr-24 no-scrollbar pb-20">
         <div className="fixed inset-0 z-0 pointer-events-none">
           {currentEvent.bgImage && (
             <img
@@ -337,20 +349,22 @@ const EventMasterTerminal = () => {
         </div>
 
         <div className="z-[100] mt-10 flex flex-col items-center relative w-full max-w-[320px] mx-auto">
-          <button
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="group relative w-full bg-black/60 backdrop-blur-2xl border border-[#39ff14]/30 p-4 rounded-md flex items-center justify-between transition-all hover:border-[#39ff14]"
-          >
-            <div className="flex flex-col items-start text-left">
-              <span className="text-[7px] text-[#00ffd5] font-orbitron uppercase tracking-widest opacity-50 mb-1">Status: Active</span>
-              <span className="text-[#39ff14] font-orbitron text-[11px] uppercase tracking-wider">{currentEvent.name}</span>
-            </div>
-            <div className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>
-              <svg className="w-4 h-4 text-[#39ff14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </button>
+          {!isRegistered && ( // Hide dropdown on success
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="group relative w-full bg-black/60 backdrop-blur-2xl border border-[#39ff14]/30 p-4 rounded-md flex items-center justify-between transition-all hover:border-[#39ff14]"
+            >
+              <div className="flex flex-col items-start text-left">
+                <span className="text-[7px] text-[#00ffd5] font-orbitron uppercase tracking-widest opacity-50 mb-1">Status: Active</span>
+                <span className="text-[#39ff14] font-orbitron text-[11px] uppercase tracking-wider">{currentEvent.name}</span>
+              </div>
+              <div className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>
+                <svg className="w-4 h-4 text-[#39ff14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </button>
+          )}
 
           {isDropdownOpen && (
             <div className="absolute top-full left-0 w-full mt-2 bg-[#030f0a]/95 backdrop-blur-3xl border border-white/10 rounded-md overflow-hidden z-[110]">
@@ -371,47 +385,82 @@ const EventMasterTerminal = () => {
         </div>
 
         <main className="z-10 py-10 flex flex-col items-center">
-          <div className="max-w-3xl w-full mb-10 text-center">
-            <h1 className="font-orbitron text-4xl md:text-5xl font-bold text-[#39ff14] uppercase tracking-widest drop-shadow-[0_0_15px_rgba(57,255,20,0.6)]">
-              {currentEvent.name}
-            </h1>
-            <div className="flex justify-center flex-wrap gap-4 mt-4 font-orbitron text-[10px] text-[#00ffd5] opacity-80 uppercase tracking-widest">
-              <span>VENUE: {currentEvent.venue}</span>
-              <span className="opacity-30">|</span>
-              <span>DATE: {currentEvent.date}</span>
-              <span className="opacity-30">|</span>
-              <span>TYPE: {currentEvent.type}</span>
-            </div>
-
-            <div className="mt-8 bg-black/30 backdrop-blur-md border border-white/5 p-6 rounded-lg text-left">
-              <p className="text-gray-300 font-light leading-relaxed mb-6">{currentEvent.description}</p>
-              <div className={`grid grid-cols-1 ${hasEntryFee ? 'md:grid-cols-2' : ''} gap-x-6 gap-y-4 border-t border-white/10 pt-6`}>
-                <div className="space-y-3 text-[13px] md:text-[15px] uppercase tracking-wider text-[#39ff14]/90">
-                  {currentEvent.details.map((detail, index) => (
-                    <p key={index} className="leading-relaxed">{detail}</p>
-                  ))}
+          {!isRegistered ? (
+            /* REGISTRATION FORM VIEW */
+            <>
+              <div className="max-w-3xl w-full mb-10 text-center">
+                <h1 className="font-orbitron text-4xl md:text-5xl font-bold text-[#39ff14] uppercase tracking-widest drop-shadow-[0_0_15px_rgba(57,255,20,0.6)]">
+                  {currentEvent.name}
+                </h1>
+                <div className="flex justify-center flex-wrap gap-4 mt-4 font-orbitron text-[10px] text-[#00ffd5] opacity-80 uppercase tracking-widest">
+                  <span>VENUE: {currentEvent.venue}</span>
+                  <span className="opacity-30">|</span>
+                  <span>DATE: {currentEvent.date}</span>
+                  <span className="opacity-30">|</span>
+                  <span>TYPE: {currentEvent.type}</span>
                 </div>
 
-                {hasEntryFee && (
-                  <div className="bg-[#39ff14]/5 p-6 rounded border border-[#39ff14]/20 flex flex-col items-center text-center">
-                    <p className="text-[#39ff14] text-[13px] font-orbitron mb-4 tracking-widest">BANK TRANSFER DETAILS</p>
-                    <img src="/qrcode.png" alt="Payment QR" className="w-64 h-64 object-cover rounded-lg mb-4" />
-                    <a href="/qrcode.png" download className="text-[#39ff14] border border-[#39ff14]/50 px-4 py-2 rounded-full text-[10px] font-orbitron uppercase">Download QR</a>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+                <div className="mt-8 bg-black/30 backdrop-blur-md border border-white/5 p-6 rounded-lg text-left">
+                  <p className="text-gray-300 font-light leading-relaxed mb-6">{currentEvent.description}</p>
+                  <div className={`grid grid-cols-1 ${hasEntryFee ? 'md:grid-cols-2' : ''} gap-x-6 gap-y-4 border-t border-white/10 pt-6`}>
+                    <div className="space-y-3 text-[13px] md:text-[15px] uppercase tracking-wider text-[#39ff14]/90">
+                      {currentEvent.details.map((detail, index) => (
+                        <p key={index} className="leading-relaxed">{detail}</p>
+                      ))}
+                    </div>
 
-          <div className="w-full">
-            <RegistrationForm
-              key={`${selectedEvent}-${memberCount}`}
-              title={`${currentEvent.name} Interface`}
-              fields={getDynamicFields()}
-              onSubmit={handleMasterSubmit}
-              isSubmitting={isSubmitting}
-            />
-          </div>
+                    {hasEntryFee && (
+                      <div className="bg-[#39ff14]/5 p-6 rounded border border-[#39ff14]/20 flex flex-col items-center text-center">
+                        <p className="text-[#39ff14] text-[13px] font-orbitron mb-4 tracking-widest">BANK TRANSFER DETAILS</p>
+                        <img src="/qrcode.png" alt="Payment QR" className="w-64 h-64 object-cover rounded-lg mb-4" />
+                        <a href="/qrcode.png" download className="text-[#39ff14] border border-[#39ff14]/50 px-4 py-2 rounded-full text-[10px] font-orbitron uppercase">Download QR</a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full">
+                <RegistrationForm
+                  key={`${selectedEvent}-${memberCount}`}
+                  title={`${currentEvent.name} Interface`}
+                  fields={getDynamicFields()}
+                  onSubmit={handleMasterSubmit}
+                  isSubmitting={isSubmitting}
+                />
+              </div>
+            </>
+          ) : (
+            /* SUCCESS / JOIN WHATSAPP VIEW */
+            <div className="max-w-2xl w-full bg-black/60 backdrop-blur-3xl border border-[#39ff14]/30 p-10 rounded-2xl text-center shadow-[0_0_40px_rgba(57,255,20,0.2)] animate-in zoom-in duration-500 my-20">
+              <div className="w-20 h-20 border-2 border-[#39ff14] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_#39ff14]">
+                <svg className="w-10 h-10 text-[#39ff14]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h2 className="font-orbitron text-3xl text-[#39ff14] mb-4 tracking-widest uppercase">Registration Success</h2>
+              <p className="font-roboto text-gray-400 mb-8 tracking-wider">
+                Your entry for <strong>{currentEvent.name}</strong> has been received.
+                Please join the official WhatsApp group for event updates and communication.
+              </p>
+
+              <a
+                href={currentEvent.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#25D366] text-white px-8 py-4 rounded-full font-orbitron font-bold tracking-widest hover:scale-105 transition-transform shadow-[0_5px_15px_rgba(37,211,102,0.4)]"
+              >
+                Join WhatsApp Community
+              </a>
+
+              <button
+                onClick={() => setIsRegistered(false)}
+                className="block mx-auto mt-10 text-[10px] font-orbitron text-gray-500 hover:text-[#39ff14] transition-colors"
+              >
+                ← Back to Form
+              </button>
+            </div>
+          )}
         </main>
       </div>
     </div>

@@ -3,22 +3,18 @@ import '../../App.css';
 
 /**
  * Enhanced Cyber-Tactical Event Registration Form
- * @param {string} title - The name of the event
- * @param {Array} fields - Array of objects: { id, label, type, placeholder, required, options, value }
- * @param {function} onFieldUpdate - Parent callback for dynamic logic
- * @param {function} onSubmit - Callback function for form submission
+ * Optimized for full-device responsiveness and seamless parent state integration.
  */
-const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
+const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit, isSubmitting }) => {
   const [formData, setFormData] = useState({});
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncPercent, setSyncPercent] = useState(0);
   const [dynamicFields, setDynamicFields] = useState(fields);
 
-  // Sync internal fields state when props change (crucial for dynamic member fields)
+  // Sync internal fields state when props change
   useEffect(() => {
     setDynamicFields(fields);
 
-    // Initialize formData with current values from fields (like the default memberCount)
     const initialData = {};
     fields.forEach(field => {
       if (field.value !== undefined) {
@@ -34,13 +30,10 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
 
     setFormData((prev) => ({ ...prev, [name]: fieldValue }));
 
-    // Notify parent of field changes (critical for team events/memberCount logic)
-    // We check for onFieldUpdate and also handle the specific select change
     if (onFieldUpdate) {
       onFieldUpdate(name, fieldValue);
     }
 
-    // Specifically check for dynamic field triggers like member count
     const fieldConfig = dynamicFields.find(f => f.id === name);
     if (fieldConfig && fieldConfig.onChange) {
       fieldConfig.onChange(e);
@@ -57,6 +50,8 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
       if (progress >= 100) {
         setSyncPercent(100);
         clearInterval(interval);
+
+        // Brief pause at 100% for visual impact before switching views
         setTimeout(() => {
           if (onSubmit) onSubmit(formData);
           setIsSyncing(false);
@@ -70,15 +65,15 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
 
   return (
     <div className="w-full max-w-4xl mx-auto relative group px-2 sm:px-6 lg:px-8 my-6 md:my-10">
-      {/* Decorative Borders */}
+      {/* Tactical Decorative Borders */}
       <div className="absolute -top-1 -left-1 sm:-top-3 sm:-left-3 w-6 h-6 sm:w-10 sm:h-10 border-t-2 border-l-2 border-[#39ff14] z-20 transition-all group-hover:scale-110"></div>
       <div className="absolute -bottom-1 -right-1 sm:-bottom-3 sm:-right-3 w-6 h-6 sm:w-10 sm:h-10 border-b-2 border-r-2 border-[#00ffd5] z-20 transition-all group-hover:scale-110"></div>
 
       <div className="bg-black/85 backdrop-blur-3xl border border-white/10 rounded-2xl px-4 py-8 sm:p-10 md:p-16 shadow-[0_0_60px_rgba(0,0,0,0.9)] relative overflow-hidden">
-        {/* Scanning Effect */}
+
+        {/* Animated Scanning Line */}
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-[#39ff14]/5 to-transparent h-[200%] -top-full animate-[scan_8s_linear_infinite]"></div>
 
-        {/* Header Section */}
         <div className="text-center mb-10 md:mb-16 relative z-10">
           <div className="flex items-center justify-center gap-2 sm:gap-6 mb-6 font-orbitron text-[8px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.5em] text-[#39ff14] opacity-70">
             <span className="w-6 sm:w-16 h-[1px] bg-[#39ff14]"></span>
@@ -94,7 +89,6 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
           </p>
         </div>
 
-        {/* Form Body */}
         <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 md:gap-y-10">
             {dynamicFields.map((field) => (
@@ -112,10 +106,10 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
                   {field.type === 'select' ? (
                     <select
                       name={field.id}
-                      value={field.value || formData[field.id] || ""}
+                      value={formData[field.id] || ""}
                       required={field.required}
                       onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 sm:px-5 py-4 sm:py-5 text-sm sm:text-base text-white font-roboto focus:outline-none focus:border-[#39ff14]/50 focus:bg-[#0a1a12] transition-all duration-500 shadow-inner appearance-none cursor-pointer"
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 sm:px-5 py-4 sm:py-5 text-sm sm:text-base text-white font-roboto focus:outline-none focus:border-[#39ff14]/50 focus:bg-[#0a1a12] transition-all duration-500 appearance-none cursor-pointer"
                     >
                       <option value="" className="bg-[#030f0a] text-white/40" disabled>SELECT_OPTION</option>
                       {field.options?.map((opt) => (
@@ -145,7 +139,6 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
                     />
                   )}
 
-                  {/* Dropdown Arrow for Select */}
                   {field.type === 'select' && (
                     <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-[#39ff14]">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,19 +147,17 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
                     </div>
                   )}
 
-                  {/* Glowing Bottom Border on Focus */}
                   <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#39ff14] to-[#00ffd5] w-0 transition-all duration-700 group-focus-within/input:w-full"></div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Sync / Submit Button */}
           <div className="pt-8 md:pt-12">
             <button
               type="submit"
-              disabled={isSyncing}
-              className={`w-full relative group/btn h-14 sm:h-20 rounded-xl overflow-hidden transition-all duration-500 flex items-center justify-center px-2 ${isSyncing ? 'opacity-50' : 'hover:shadow-[0_0_40px_rgba(57,255,20,0.5)] active:scale-[0.98]'}`}
+              disabled={isSyncing || isSubmitting}
+              className={`w-full relative group/btn h-14 sm:h-20 rounded-xl overflow-hidden transition-all duration-500 flex items-center justify-center px-2 ${isSyncing || isSubmitting ? 'opacity-50' : 'hover:shadow-[0_0_40px_rgba(57,255,20,0.5)] active:scale-[0.98]'}`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#39ff14] via-[#00ffd5] to-[#39ff14] bg-[length:200%_auto] transition-transform duration-500"></div>
               <span className={`relative z-10 font-orbitron font-black uppercase text-[#031f14] flex items-center justify-center text-center whitespace-nowrap text-[10px] xs:text-[12px] sm:text-[14px] md:text-base tracking-[0.05em] xs:tracking-[0.15em] sm:tracking-[0.3em] md:tracking-[0.5em] ${isSyncing ? 'animate-pulse' : ''}`}>
@@ -179,7 +170,7 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
           </div>
         </form>
 
-        {/* Success Overlay */}
+        {/* Success Overlay - Triggers just before parent switches view */}
         {syncPercent === 100 && (
           <div className="absolute inset-0 z-50 bg-[#030f0a] flex flex-col items-center justify-center animate-in fade-in duration-500 px-4 text-center">
             <div className="w-20 h-20 sm:w-24 sm:h-24 border-2 border-[#39ff14] rounded-full flex items-center justify-center mb-8 animate-pulse shadow-[0_0_30px_#39ff14]">
