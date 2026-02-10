@@ -16,8 +16,10 @@ const EVENTS = {
     fee: "100",
     description: "Become a DataViz Master. Transform complex datasets into clear, actionable insights.",
     details: ["• Tools: Power BI / Tableau / Excel", "• Format: Solo/Duo Challenge", "• Entry Fee: ₹100", "• Prize Pool: ₹5000"],
+    isTeamEvent: true, // Updated to allow Duo
+    teamConfig: { min: 1, max: 2 },
     fields: [
-      { id: 'fullName', label: 'Analyst Name', placeholder: 'Enter your full name', required: true },
+      { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name (Optional for Solo)', required: false },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -72,12 +74,14 @@ const EVENTS = {
     fee: "100",
     description: "A simulation-based robotics event focusing on coding and logic building.",
     details: ["• Format: Multiplayer Virtual Simulation", "• Language: Python / C++ / ROS", "• Team Size: 2-4 Members", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
+    isTeamEvent: true,
+    teamConfig: { min: 2, max: 4 },
     fields: [
-      { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
-      { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
-      { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
+      { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
-      { id: 'codingLang', label: 'Preferred Language', type: 'select', options: ['C', 'C++', 'Python', 'Java', 'JavaScript'], required: true },
+      { id: 'email', label: 'Contact Email', placeholder: 'Enter primary email', type: 'email', required: true },
+      { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter primary contact', required: true },
+      { id: 'codingLang', label: 'Preferred Language', type: 'select', options: ['Python', 'C++', 'ROS'], required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -96,7 +100,7 @@ const EVENTS = {
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
-      { id: 'expertise', label: 'Primary Language', type: 'select', options: ['C++', 'Java', 'Python'], required: true },
+      { id: 'expertise', label: 'Primary Language', type: 'select', options: ['C++', 'Java'], required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -109,12 +113,13 @@ const EVENTS = {
     bgImage: "/Event Posters/Ad-O-Mania/Ad-O-Mania Event Poster 2.png",
     fee: "200",
     description: "Bring products to life using marketing strategies.",
-    details: ["• Team Size: 1-2 Members", "• Pitches before judges", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
+    details: ["• Team Size: 1-3 Members", "• Pitches before judges", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
     isTeamEvent: true,
+    teamConfig: { min: 1, max: 3 },
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter your team name', required: true },
-      { id: 'memberCount', label: 'Number of Players', type: 'select', options: ['1', '2', '3'], required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
+      { id: 'phone', label: 'Whatsapp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -129,10 +134,10 @@ const EVENTS = {
     description: "Enter the coding arena—solve fast, decode clues.",
     details: ["• Team Size: 1", "• Languages: C++, Java, Python", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
     fields: [
-      { id: 'fullName', label: 'Full Name', required: true },
-      { id: 'email', label: 'College Email', type: 'email', required: true },
-      { id: 'phone', label: 'WhatsApp Number', type: 'tel', required: true },
-      { id: 'college', label: 'College Name', required: true },
+      { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
+      { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
+      { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
+      { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -149,7 +154,7 @@ const EVENTS = {
     fields: [
       { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', type: 'email', placeholder: 'Enter your email', required: true },
-      { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 XXXXX XXXXX', required: true },
+      { id: 'phone', label: 'Whatsapp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'instagramHandle', label: 'Instagram Handle', placeholder: 'Enter your Instagram handle', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
@@ -161,28 +166,18 @@ const EVENTS = {
     venue: "READING ROOM",
     date: "27TH FEB (DAY 1)",
     type: "TOURNAMENT",
-    bgImage: "",
+    bgImage: "/poster.png",
     fee: "250",
     description: "Battle it out in the virtual world.",
     details: ["• Team Size: 4 to 5 Members", "• Entry Fees: ₹200", "• Prize Pool: ₹10000"],
+    isTeamEvent: true,
+    teamConfig: { min: 4, max: 5 },
     fields: [
-      { id: 'teamName', label: 'Team Name', placeholder: 'Enter team name', required: true },
+      { id: 'teamName', label: 'Team Name', placeholder: 'Enter team name', required: true, fullWidth: true },
       { id: 'leaderName', label: 'Leader Name', placeholder: 'Enter full name', required: true },
       { id: 'leaderGameId', label: 'Leader In Game ID', placeholder: 'Enter in-game id', required: true },
       { id: 'leaderCollege', label: 'Leader College', placeholder: 'Enter institute name', required: true },
-      { id: 'p2Name', label: 'Player 2 Name', placeholder: 'Enter full name', required: true },
-      { id: 'p2GameId', label: 'Player 2 In Game ID', placeholder: 'Enter in-game id', required: true },
-      { id: 'p2College', label: 'Player 2 College', placeholder: 'Enter institute name', required: true },
-      { id: 'p3Name', label: 'Player 3 Name', placeholder: 'Enter full name', required: true },
-      { id: 'p3GameId', label: 'Player 3 In Game ID', placeholder: 'Enter in-game id', required: true },
-      { id: 'p3College', label: 'Player 3 College', placeholder: 'Enter institute name', required: true },
-      { id: 'p4Name', label: 'Player 4 Name', placeholder: 'Enter full name', required: true },
-      { id: 'p4GameId', label: 'Player 4 In Game ID', placeholder: 'Enter in-game id', required: true },
-      { id: 'p4College', label: 'Player 4 College', placeholder: 'Enter institute name', required: true },
-      { id: 'subName', label: 'Substitute Name', placeholder: 'Enter full name', required: false },
-      { id: 'subGameId', label: 'Substitute In Game ID', placeholder: 'Enter in-game id', required: false },
-      { id: 'subCollege', label: 'Substitute College', placeholder: 'Enter institute name', required: false },
-      { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 XXXXX XXXXX', required: true },
+      { id: 'phone', label: 'Leaders Whatsapp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -197,10 +192,10 @@ const EVENTS = {
     description: "Compete among the participants",
     details: ["• Team size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
     fields: [
-      { id: 'fullName', label: 'Full Name', required: true },
-      { id: 'email', label: 'College Email', type: 'email', required: true },
-      { id: 'phone', label: 'WhatsApp Number', type: 'tel', required: true },
-      { id: 'college', label: 'College Name', required: true },
+      { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
+      { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
+      { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
+      { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
     ]
@@ -214,10 +209,12 @@ const EVENTS = {
     fee: "100",
     description: "AI video storytelling event; video length 60-90s.",
     details: ["• Team Size: 1-3 Members", "• Live Presentation", "• Entry Fees: ₹200", "• Prize Pool: ₹5000"],
+    isTeamEvent: true,
+    teamConfig: { min: 1, max: 3 },
     fields: [
-      { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
-      { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
-      { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
+      { id: 'teamName', label: 'Team Name', placeholder: 'Enter team/project name', required: true },
+      { id: 'email', label: 'Contact Email', placeholder: 'Enter primary email', type: 'email', required: true },
+      { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter primary contact', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
       { id: 'transactionId', label: 'Transaction ID', placeholder: 'Enter Transaction ID', required: true }
@@ -226,20 +223,20 @@ const EVENTS = {
 };
 
 const EventMasterTerminal = () => {
-  const { eventId } = useParams(); // URL parameter
+  const { eventId } = useParams();
   const navigate = useNavigate();
 
-  // Selected event initialized directly from URL or default to seedBanker
   const [selectedEvent, setSelectedEvent] = useState(eventId && EVENTS[eventId] ? eventId : 'seedBanker');
   const [activeNav, setActiveNav] = useState('events');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [memberCount, setMemberCount] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Synchronize internal state with URL changes
   useEffect(() => {
     if (eventId && EVENTS[eventId]) {
       setSelectedEvent(eventId);
+      const config = EVENTS[eventId].teamConfig;
+      setMemberCount(config ? config.min : 1);
     }
   }, [eventId]);
 
@@ -247,15 +244,69 @@ const EventMasterTerminal = () => {
   const hasEntryFee = currentEvent.fee && Number(currentEvent.fee.toString().replace(/[^0-9.-]+/g, "")) > 0;
 
   const handleSelect = (key) => {
-    navigate(`/register/${key}`); // Use navigate to update URL
+    navigate(`/register/${key}`);
     setIsDropdownOpen(false);
-    setMemberCount(1);
+  };
+
+  const getDynamicFields = () => {
+    let baseFields = [...currentEvent.fields];
+
+    if (currentEvent.isTeamEvent && currentEvent.teamConfig) {
+      const { min, max } = currentEvent.teamConfig;
+      const options = Array.from({ length: max - min + 1 }, (_, i) => (min + i).toString());
+      const insertionIndex = baseFields.findIndex(f => f.id === 'paymentScreenshot');
+
+      const memberCountSelector = {
+        id: 'dynamicMemberCount',
+        label: 'Total Team Members',
+        type: 'select',
+        options: options,
+        value: memberCount.toString(),
+        onChange: (e) => setMemberCount(parseInt(e.target.value, 10)),
+        required: true,
+        fullWidth: true
+      };
+
+      const memberFields = [];
+      const labelPrefix = selectedEvent === 'gaming' ? 'Player' : 'Member';
+
+      // For Events like seedBanker (Data Viz) or adForge, player 1 is the main contact,
+      // but we need to collect names for others.
+      const startFrom = (selectedEvent === 'gaming' || selectedEvent === 'seedBanker' || selectedEvent === 'botYantra') ? 1 : 1;
+
+      for (let i = 1; i <= memberCount; i++) {
+        // Avoid duplicate name fields if leaderName or fullName is already in baseFields
+        const isLeader = (i === 1 && (baseFields.some(f => f.id === 'leaderName' || f.id === 'fullName')));
+        if (isLeader) continue;
+
+        memberFields.push({
+          id: `player${i}Name`,
+          label: `${labelPrefix} ${i} Name`,
+          placeholder: `Enter full name of ${labelPrefix.toLowerCase()} ${i}`,
+          required: true,
+          fullWidth: true
+        });
+
+        if (selectedEvent === 'gaming') {
+          memberFields.push({
+            id: `player${i}GameId`,
+            label: `${labelPrefix} ${i} In-Game ID`,
+            placeholder: `Enter game ID for player ${i}`,
+            required: true
+          });
+        }
+      }
+
+      baseFields.splice(insertionIndex, 0, memberCountSelector, ...memberFields);
+    }
+    return baseFields;
   };
 
   const handleMasterSubmit = async (formData) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
-    // ... submission logic ...
+    console.log("Terminal Submission Data:", { ...formData, event: selectedEvent, totalMembers: memberCount });
+    // API logic here
     setIsSubmitting(false);
   };
 
@@ -273,7 +324,7 @@ const EventMasterTerminal = () => {
       <Footer activeNav={activeNav} setActiveNav={setActiveNav} />
 
       <div className="flex-1 w-full h-full overflow-y-auto flex flex-col relative pl-16 md:pl-24 pr-16 md:pr-24 no-scrollbar">
-        <div className="fixed inset-0 z-0 pointer-events-none transition-all duration-1000 ease-in-out">
+        <div className="fixed inset-0 z-0 pointer-events-none">
           {currentEvent.bgImage && (
             <img
               key={currentEvent.bgImage}
@@ -332,17 +383,13 @@ const EventMasterTerminal = () => {
               <span>TYPE: {currentEvent.type}</span>
             </div>
 
-            <div className="mt-8 bg-black/30 backdrop-blur-md border border-white/5 p-6 rounded-lg text-left fade-in-up">
+            <div className="mt-8 bg-black/30 backdrop-blur-md border border-white/5 p-6 rounded-lg text-left">
               <p className="text-gray-300 font-light leading-relaxed mb-6">{currentEvent.description}</p>
-              {/* FIXED TERNARY GRID: Only expands to 2 columns if fee exists */}
               <div className={`grid grid-cols-1 ${hasEntryFee ? 'md:grid-cols-2' : ''} gap-x-6 gap-y-4 border-t border-white/10 pt-6`}>
                 <div className="space-y-3 text-[13px] md:text-[15px] uppercase tracking-wider text-[#39ff14]/90">
                   {currentEvent.details.map((detail, index) => (
                     <p key={index} className="leading-relaxed">{detail}</p>
                   ))}
-
-                  {/* These now stay within the details column and reflect current state */}
-
                 </div>
 
                 {hasEntryFee && (
@@ -358,9 +405,9 @@ const EventMasterTerminal = () => {
 
           <div className="w-full">
             <RegistrationForm
-              key={selectedEvent}
+              key={`${selectedEvent}-${memberCount}`}
               title={`${currentEvent.name} Interface`}
-              fields={currentEvent.fields}
+              fields={getDynamicFields()}
               onSubmit={handleMasterSubmit}
               isSubmitting={isSubmitting}
             />

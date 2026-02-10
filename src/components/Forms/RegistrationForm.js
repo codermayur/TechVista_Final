@@ -4,7 +4,7 @@ import '../../App.css';
 /**
  * Enhanced Cyber-Tactical Event Registration Form
  * @param {string} title - The name of the event
- * @param {Array} fields - Array of objects: { id, label, type, placeholder, required, options }
+ * @param {Array} fields - Array of objects: { id, label, type, placeholder, required, options, value }
  * @param {function} onFieldUpdate - Parent callback for dynamic logic
  * @param {function} onSubmit - Callback function for form submission
  */
@@ -14,9 +14,18 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
   const [syncPercent, setSyncPercent] = useState(0);
   const [dynamicFields, setDynamicFields] = useState(fields);
 
-  // Sync internal fields state when props change
+  // Sync internal fields state when props change (crucial for dynamic member fields)
   useEffect(() => {
     setDynamicFields(fields);
+
+    // Initialize formData with current values from fields (like the default memberCount)
+    const initialData = {};
+    fields.forEach(field => {
+      if (field.value !== undefined) {
+        initialData[field.id] = field.value;
+      }
+    });
+    setFormData(prev => ({ ...prev, ...initialData }));
   }, [fields]);
 
   const handleChange = (e) => {
@@ -26,8 +35,15 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
     setFormData((prev) => ({ ...prev, [name]: fieldValue }));
 
     // Notify parent of field changes (critical for team events/memberCount logic)
+    // We check for onFieldUpdate and also handle the specific select change
     if (onFieldUpdate) {
       onFieldUpdate(name, fieldValue);
+    }
+
+    // Specifically check for dynamic field triggers like member count
+    const fieldConfig = dynamicFields.find(f => f.id === name);
+    if (fieldConfig && fieldConfig.onChange) {
+      fieldConfig.onChange(e);
     }
   };
 
@@ -96,14 +112,15 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
                   {field.type === 'select' ? (
                     <select
                       name={field.id}
+                      value={field.value || formData[field.id] || ""}
                       required={field.required}
                       onChange={handleChange}
                       className="w-full bg-white/5 border border-white/10 rounded-lg px-4 sm:px-5 py-4 sm:py-5 text-sm sm:text-base text-white font-roboto focus:outline-none focus:border-[#39ff14]/50 focus:bg-[#0a1a12] transition-all duration-500 shadow-inner appearance-none cursor-pointer"
                     >
-                      <option value="" className="bg-[#030f0a] text-white/40">SELECT_OPTION</option>
+                      <option value="" className="bg-[#030f0a] text-white/40" disabled>SELECT_OPTION</option>
                       {field.options?.map((opt) => (
                         <option key={opt} value={opt} className="bg-[#030f0a] text-white">
-                          {opt} {field.id === 'memberCount' ? (opt === '1' ? 'PLAYER' : 'PLAYERS') : ''}
+                          {opt} {field.id.toLowerCase().includes('member') ? (opt === '1' ? 'PLAYER' : 'PLAYERS') : ''}
                         </option>
                       ))}
                     </select>
@@ -120,6 +137,7 @@ const RegistrationForm = ({ title, fields, onFieldUpdate, onSubmit }) => {
                     <input
                       type={field.type || "text"}
                       name={field.id}
+                      value={formData[field.id] || ""}
                       placeholder={field.placeholder}
                       required={field.required}
                       onChange={handleChange}
