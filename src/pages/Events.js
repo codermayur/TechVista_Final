@@ -40,7 +40,7 @@ const TimelineItem = ({ time, title, type, delay }) => (
 
 const BrochureBtn = () => (
   <a
-    href="/Brochure.pdf"
+    href="/brochure.pdf"
     download="Tech-Vista-2026-Brochure.pdf"
     className="group relative flex items-center gap-3 px-6 py-3 rounded-full font-orbitron text-[10px] uppercase tracking-[0.2em] transition-all duration-500 overflow-hidden bg-black/60 backdrop-blur-xl border border-[#39ff14]/40 text-[#39ff14] hover:text-black shadow-[0_0_15px_rgba(57,255,20,0.2)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] active:scale-95 z-[150]"
   >

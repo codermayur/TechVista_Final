@@ -14,7 +14,7 @@ const CONTACT_DATA = [
   { id: 3, section: 'event-heads', name: "Sushant Eppakayala", role: "Event Head", email: "sushant.eppakayala@vsit.edu.in", phone: "+91 96195 43525", img: "/event heads/sushant.png" },
   { id: 4, section: 'event-heads', name: "Antara Parab", role: "Event Head", email: "antara.parab@vsit.edu.in", phone: "+91 93245 72119", img: "/event heads/antara.png" },
   { id: 5, section: 'event-heads', name: "Harshita Velonde", role: "Event Head", email: "harshita.velonde@vsit.edu.in", phone: "+91 98673 36563", img: "/event heads/harshita.png" },
-  { id: 6, section: 'event-heads', name: "Agnel", role: "Event Head", email: "agnel@vsit.edu.in", phone: "+91 97021 01592", img: "" },
+  { id: 6, section: 'event-heads', name: "Agnel", role: "Event Head", email: "agnel@vsit.edu.in", phone: "+91 91674 62287", img: "/event heads/agnel.png" },
   { id: 7, section: 'event-heads', name: "Vedant Desai", role: "Event Head", email: "vedant.desai@vsit.edu.in", phone: "+91 89766 82289", img: "/event heads/vedant.png" },
   { id: 8, section: 'event-heads', name: "Yaseen Shaikh", role: "Event Head", email: "yaseen.shaikh@vsit.edu.in", phone: "+91 85918 41899", img: "/event heads/yaseen.png" },
   { id: 9, section: 'event-heads', name: "Shivani Lokhande", role: "Event Head", email: "shivani.lokhande@vsit.edu.in", phone: "+91 99750 27077", img: "/event heads/shivani.png" },

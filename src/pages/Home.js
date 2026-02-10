@@ -181,8 +181,17 @@ const AftermovieSection = () => (
     <div id="aftermovie-content" className="w-full px-4 md:px-0 flex flex-col items-center justify-center h-full">
         <h2 className="font-orbitron text-xl md:text-4xl lg:text-6xl font-bold uppercase tracking-widest text-white text-neon-pink mb-8 relative z-[105]">Aftermovie</h2>
         <div className="w-full max-w-3xl aspect-video rounded-lg overflow-hidden shadow-2xl video-container relative z-10">
-            <iframe className="w-full h-full" src="https://www.youtube.com/embed/8of5w7RgcTc" title="TechVista" frameBorder="0" allowFullScreen></iframe>
-        </div>
+<video
+    className="w-full h-full object-cover"
+    controls
+    autoPlay
+    muted
+    loop
+    playsInline
+  >
+<source src="/files/aftermovie.mov" type="video/mp4"  autoPlay/>
+</video>
+    </div>
     </div>
 );
 

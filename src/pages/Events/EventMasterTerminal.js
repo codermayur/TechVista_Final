@@ -46,7 +46,7 @@ const EVENTS = {
     details: ["• All work must be original", "• Strictly No communication", "• Entry Fees: ₹100", "• Prize Pool: ₹5000"],
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
-      { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
+      { id: 'player1Name', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -66,7 +66,7 @@ const EVENTS = {
     details: [ "• Type:Solo Challenge", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
-      { id: 'fullName', label: 'Defender Name', placeholder: 'Enter your full name', required: true },
+      { id: 'player1Name', label: 'Defender Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'college', label: 'Institute Name', placeholder: 'Enter your institute name', required: true },
@@ -110,7 +110,7 @@ const EVENTS = {
     details: ["• Format: Solo Participation", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
-      { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
+      { id: 'player1Name', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -152,7 +152,7 @@ const EVENTS = {
     details: ["• Team Size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3500"],
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
-      { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
+      { id: 'player1Name', label: 'Full Name', placeholder: 'Enter your name', required: true },
       { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -172,7 +172,7 @@ const EVENTS = {
     details: ["• Duration: 60–90 Seconds", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
-      { id: 'fullName', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
+      { id: 'player1Name', label: 'Participant Name', placeholder: 'Enter your full name', required: true },
       { id: 'email', label: 'Email ID', type: 'email', placeholder: 'Enter your email', required: true },
       { id: 'phone', label: 'Whatsapp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'instagramHandle', label: 'Instagram Handle', placeholder: 'Enter your Instagram handle', required: true },
@@ -196,8 +196,6 @@ const EVENTS = {
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
       { id: 'teamName', label: 'Team Name', placeholder: 'Enter team name', required: true, fullWidth: true },
-      { id: 'fullName', label: 'Leader Name', placeholder: 'Enter full name', required: true },
-      { id: 'leaderGameId', label: 'Leader In Game ID', placeholder: 'Enter in-game id', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter institute name', required: true },
       { id: 'phone', label: 'Leaders WhatsApp Number', type: 'tel', placeholder: 'Enter your WhatsApp number', required: true },
       { id: 'paymentScreenshot', label: 'Payment Screenshot', type: 'file', required: true },
@@ -212,11 +210,11 @@ const EVENTS = {
     type: "SOLO CHALLENGE",
     bgImage: "/Event Posters/Ultimate Kick-Off - FIFA/IMG-20260114-WA0041.jpg",
     fee: "100",
-    description: "Compete among the participants",
+    description: "An electrifying virtual FIFA event with two players battling on the big screen, intense digital football action, cheering fans, and exciting prizes. ⚽🎮",
     details: ["• Team size: 1", "• Entry Fees: ₹100", "• Prize Pool: ₹3000"],
     whatsappLink: "https://chat.whatsapp.com/Im6b6ErzpWREpYOYoqSUcC",
     fields: [
-      { id: 'fullName', label: 'Full Name', placeholder: 'Enter your name', required: true },
+      { id: 'player1Name', label: 'Full Name', placeholder: 'Enter your name', required: true },
       { id: 'email', label: 'College Email', placeholder: 'Enter your email', type: 'email', required: true },
       { id: 'phone', label: 'WhatsApp Number', placeholder: 'Enter your WhatsApp number', type: 'tel', required: true },
       { id: 'college', label: 'College Name', placeholder: 'Enter your institute name', required: true },
@@ -307,26 +305,41 @@ const EventMasterTerminal = () => {
       const labelPrefix = selectedEvent === 'gaming' ? 'Player' : 'Member';
 
       for (let i = 1; i <= memberCount; i++) {
-        const isLeader = (i === 1 && (baseFields.some(f => f.id === 'leaderName' || f.id === 'fullName')));
-        if (isLeader) continue;
+  // Only skip if the leader field is already defined in baseFields
+  // and you don't want a duplicate 'Leader' field here.
+            const isLeaderDuplicate = (i === 1 && (baseFields.some(f => f.id === 'leaderName' || f.id === 'player1Name')));
+            if (isLeaderDuplicate) continue;
 
-        memberFields.push({
-          id: `player${i}Name`,
-          label: `${labelPrefix} ${i} Name`,
-          placeholder: `Enter full name of ${labelPrefix.toLowerCase()} ${i}`,
-          required: true,
-          fullWidth: true
-        });
+            // Determine dynamic labels based on index
+            let currentLabel = `${labelPrefix} ${i} Name`;
+            let currentPlaceholder = `Enter full name of ${labelPrefix.toLowerCase()} ${i}`;
 
-        if (selectedEvent === 'gaming') {
-          memberFields.push({
-            id: `player${i}GameId`,
-            label: `${labelPrefix} ${i} In-Game ID`,
-            placeholder: `Enter game ID for player ${i}`,
-            required: true
-          });
-        }
-      }
+            if (i === 1) {
+              currentLabel = `Leader Name`;
+              currentPlaceholder = `Enter full name of the leader`;
+            } else if (i === 5) {
+              currentLabel = `Substitute Player Name`;
+              currentPlaceholder = `Enter full name of the substitute`;
+            }
+
+            memberFields.push({
+              id: `player${i}Name`,
+              label: currentLabel,
+              placeholder: currentPlaceholder,
+              required: true,
+              fullWidth: true
+            });
+
+            if (selectedEvent === 'gaming') {
+              memberFields.push({
+                id: `player${i}GameId`,
+                // Syncing the Game ID label with the player's role
+                label: i === 1 ? `Leader In-Game ID` : i === 5 ? `Substitute In-Game ID` : `${labelPrefix} ${i} In-Game ID`,
+                placeholder: `Enter game ID for ${i === 5 ? 'substitute' : 'player ' + i}`,
+                required: true
+              });
+            }
+          }
 
       baseFields.splice(insertionIndex, 0, memberCountSelector, ...memberFields);
     }
@@ -497,9 +510,18 @@ const EventMasterTerminal = () => {
                     {hasEntryFee && (
                       <div className="bg-[#39ff14]/5 p-6 rounded border border-[#39ff14]/20 flex flex-col items-center text-center">
                         <p className="text-[#39ff14] text-[13px] font-orbitron mb-4 tracking-widest">BANK TRANSFER DETAILS</p>
-                        <img src="/qrcode.png" alt="Payment QR" className="w-64 h-64 object-cover rounded-lg mb-4" />
-                        <a href="/qrcode.png" download className="text-[#39ff14] border border-[#39ff14]/50 px-4 py-2 rounded-full text-[10px] font-orbitron uppercase">Download QR</a>
-                      </div>
+<img
+    src="/qrcode.png"
+    alt="Payment QR"
+    className="w-full max-w-[256px] h-auto aspect-square object-contain rounded-lg mb-4"
+  />
+<a
+    href="/qrcode.png"
+    download
+    className="text-[#39ff14] border border-[#39ff14]/50 px-4 py-2 rounded-full text-[10px] font-orbitron uppercase transition-colors hover:bg-[#39ff14]/10"
+  >
+    Download QR
+  </a>                      </div>
                     )}
                   </div>
                 </div>
@@ -516,32 +538,42 @@ const EventMasterTerminal = () => {
               </div>
             </>
           ) : (
-            <div className="max-w-2xl w-full bg-black/60 backdrop-blur-3xl border border-[#39ff14]/30 p-10 rounded-2xl text-center shadow-[0_0_40px_rgba(57,255,20,0.2)] animate-in zoom-in duration-500 my-20">
-              <div className="w-20 h-20 border-2 border-[#39ff14] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_#39ff14]">
-                <svg className="w-10 h-10 text-[#39ff14]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                </svg>
+<div className="max-w-2xl w-[92%] sm:w-full bg-black/60 backdrop-blur-3xl border border-[#39ff14]/30 p-5 sm:p-10 rounded-2xl text-center shadow-[0_0_40px_rgba(57,255,20,0.2)] animate-in zoom-in duration-500 my-10 sm:my-20 mx-auto overflow-hidden">             <div className="w-16 h-16 sm:w-20 sm:h-20 border-2 border-[#39ff14] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-[0_0_15px_#39ff14]">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-[#39ff14]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                  </svg>
               </div>
-              <h2 className="font-orbitron text-3xl text-[#39ff14] mb-4 tracking-widest uppercase">Registration Success</h2>
-              <p className="font-roboto text-gray-400 mb-8 tracking-wider">
-                Your entry for <strong>{currentEvent.name}</strong> has been received.
-              </p>
+                    <h2 className="font-orbitron
+    /* Font size: smaller on mobile, scales up */
+    text-lg sm:text-2xl md:text-3xl
+    text-[#39ff14] mb-3 sm:mb-4
+    /* Letter spacing: tight on mobile, wide on desktop */
+    tracking-tight sm:tracking-widest
+    uppercase
+    /* Vital for responsiveness: */
+    text-center
+    break-words
+    max-w-full">
+    Registration Success
+  </h2>
+               <p className="font-roboto text-sm sm:text-base text-gray-400 mb-6 sm:mb-8 tracking-wider px-4">
+                        Your entry for <strong className="text-white">{currentEvent.name}</strong> has been received.
+                      </p>
 
-              <a
-                href={currentEvent.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#25D366] text-white px-8 py-4 rounded-full font-orbitron font-bold tracking-widest hover:scale-105 transition-transform shadow-[0_5px_15px_rgba(37,211,102,0.4)]"
-              >
-                Join WhatsApp Community
-              </a>
-
-              <button
-                onClick={() => setIsRegistered(false)}
-                className="block mx-auto mt-10 text-[10px] font-orbitron text-gray-500 hover:text-[#39ff14] transition-colors"
-              >
-                ← Back to Form
-              </button>
+                                  <a
+                        href={currentEvent.whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block w-full sm:w-auto bg-[#25D366] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-orbitron text-xs sm:text-sm font-bold tracking-widest hover:scale-105 transition-transform shadow-[0_5px_15px_rgba(37,211,102,0.4)]"
+                      >
+                        Join WhatsApp Community
+                      </a>
+                                    <button
+                            onClick={() => setIsRegistered(false)}
+                            className="block mx-auto mt-8 sm:mt-10 text-[10px] sm:text-xs font-orbitron text-gray-500 hover:text-[#39ff14] transition-colors uppercase tracking-widest"
+                          >
+                            ← Back to Form
+                          </button>
             </div>
           )}
         </main>
